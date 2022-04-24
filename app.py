@@ -99,8 +99,18 @@ def gettext():
         textfiles = []
         for file in textdata.find({}):
             textfiles.append(file["text"])
-        textfiles.reverse()
         return jsonify(textfiles), 200
+    except Exception as e:
+        print(e)
+        return "Internal server error", 500
+
+
+@app.route("/api/getHighlightedno/<num>", methods=['GET'])
+def getHighlightedno(num):
+    try:
+        document = textdata.find({'sno': num})
+        print(document[0])
+        return jsonify(document[0]["highlights"]), 200
     except Exception as e:
         print(e)
         return "Internal server error", 500
