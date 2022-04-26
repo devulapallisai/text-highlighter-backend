@@ -4,7 +4,6 @@ from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from flask import request
-from tomlkit import string
 
 # Here we added .env file and that provides database password in connecting string to backend
 load_dotenv('.env')
@@ -130,4 +129,4 @@ def hello_world():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
